@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<Enum uuid="d8127cd0-ee00-4c27-b207-89719dd1e9ca">
+		<InternalInfo>
+			<xr:GeneratedType name="EnumRef.СтатусыЗаказа" category="Ref">
+				<xr:TypeId>8d1e9eb2-ef36-4d66-aa57-3d40ea5dfae2</xr:TypeId>
+				<xr:ValueId>45054350-6df0-4800-a70f-65d6e68fc0d8</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="EnumManager.СтатусыЗаказа" category="Manager">
+				<xr:TypeId>53ccc9f6-2967-4b07-803b-99ec48ff3661</xr:TypeId>
+				<xr:ValueId>db34733e-ea76-46f3-bf8b-ecac3d17ba36</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="EnumList.СтатусыЗаказа" category="List">
+				<xr:TypeId>e9846741-6e07-4f8d-a32f-7c1b82e25491</xr:TypeId>
+				<xr:ValueId>16edc18c-4872-441d-b538-2f48804df915</xr:ValueId>
+			</xr:GeneratedType>
+		</InternalInfo>
+		<Properties>
+			<Name>СтатусыЗаказа</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Статусы заказа</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment/>
+			<UseStandardCommands>false</UseStandardCommands>
+			<Characteristics/>
+			<QuickChoice>true</QuickChoice>
+			<ChoiceMode>BothWays</ChoiceMode>
+			<DefaultListForm/>
+			<DefaultChoiceForm/>
+			<AuxiliaryListForm/>
+			<AuxiliaryChoiceForm/>
+			<ListPresentation/>
+			<ExtendedListPresentation/>
+			<Explanation/>
+			<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
+		</Properties>
+		<ChildObjects>
+			<EnumValue uuid="906aacf8-4fb2-4d2c-b72c-b66223898b83">
+				<Properties>
+					<Name>Новый</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Новый</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Color>pal:LightBlue</Color>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="2cdc717f-fda0-4218-99e1-e350795f285c">
+				<Properties>
+					<Name>Собран</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Собран</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Color>pal:Yellow</Color>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="62ab2773-95c7-4756-a981-d09ce333bce7">
+				<Properties>
+					<Name>Отправлен</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отправлен</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Color>pal:Violet</Color>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="945c4a0d-8f01-4c05-96d9-7778d5ac90fb">
+				<Properties>
+					<Name>Выполнен</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выполнен</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Color>pal:Green</Color>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="3ea27164-5cc3-43f9-8ce3-8968f6982137">
+				<Properties>
+					<Name>Отменён</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отменён</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Color>pal:Red</Color>
+				</Properties>
+			</EnumValue>
+		</ChildObjects>
+	</Enum>
+</MetaDataObject>

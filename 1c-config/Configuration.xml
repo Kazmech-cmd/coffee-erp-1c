@@ -262,12 +262,16 @@
 			<Subsystem>НСИ</Subsystem>
 			<Subsystem>Закупки</Subsystem>
 			<Subsystem>Склад</Subsystem>
+			<Subsystem>Продажи</Subsystem>
 			<HTTPService>Test</HTTPService>
 			<Catalog>Номенклатура</Catalog>
 			<Catalog>Склады</Catalog>
 			<Catalog>Контрагенты</Catalog>
 			<Catalog>Сотрудники</Catalog>
 			<Document>ПоступлениеТоваров</Document>
+			<Document>ЗаказПокупателя</Document>
+			<Document>РеализацияТоваров</Document>
+			<Enum>СтатусыЗаказа</Enum>
 			<Report>ОстаткиТоваров</Report>
 			<AccumulationRegister>ОстаткиТоваров</AccumulationRegister>
 		</ChildObjects>

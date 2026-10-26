@@ -1,0 +1,9 @@
+*.dt
+*.1CD
+*.cf
+*.cfu
+*.lck
+*.log
+1Cv8Log/
+1Cv8FTxt/
+__pycache__/

@@ -29,7 +29,7 @@
 			<Metadata name="Catalog.Сотрудники.Attribute.Должность" id="19e86a13-9139-4979-a22e-81e4f4695ca7"/>
 			<Metadata name="Catalog.Сотрудники.Attribute.ДатаПриема" id="fe106490-2a43-4196-a553-239b00451992"/>
 		</Metadata>
-		<Metadata name="Configuration.Конфигурация" id="311075ee-6822-40f6-8303-2979b4ce3b9d" configVersion="aa7039801a8d4541a07e9d58f0fda03400000000"/>
+		<Metadata name="Configuration.Конфигурация" id="311075ee-6822-40f6-8303-2979b4ce3b9d" configVersion="1034ecc574ef504687033d01694304e500000000"/>
 		<Metadata name="Document.ПоступлениеТоваров" id="68c4d8e9-e648-4de8-b221-8c8028ebe947" configVersion="3dd9e37890f1c843aad7ac6a25dd47c200000000">
 			<Metadata name="Document.ПоступлениеТоваров.TabularSection.Товары.Attribute.Номенклатура" id="20936c37-1ffb-48e6-b0e6-88552826c45c"/>
 			<Metadata name="Document.ПоступлениеТоваров.TabularSection.Товары.Attribute.Цена" id="49939bf9-26dd-42a1-8d5e-b15df1ff8b96"/>
@@ -48,7 +48,11 @@
 		</Metadata>
 		<Metadata name="HTTPService.Test.Module" id="6ff49259-878b-4608-9214-267b07bcd2bb.0" configVersion="c3120462ad5eff4eb01b6dc473f5b0d600000000"/>
 		<Metadata name="Language.Русский" id="e9bd55e2-b711-4689-a127-467c401ec07e" configVersion="ddc6d1788168274b9cac06c1b7dfd9ad00000000"/>
+		<Metadata name="Report.ОстаткиТоваров" id="d5ddfaff-ce79-4cfb-9cfa-b0007830e3a8" configVersion="4b475de1a73f534f9cfff945052aacca00000000"/>
+		<Metadata name="Report.ОстаткиТоваров.Template.ОсновнаяСхемаКомпоновкиДанных" id="57416058-ce2b-4369-8636-408011041feb" configVersion="ab319b08d4982646aed4f0dc328a7a4b00000000"/>
+		<Metadata name="Report.ОстаткиТоваров.Template.ОсновнаяСхемаКомпоновкиДанных.Template" id="57416058-ce2b-4369-8636-408011041feb.0" configVersion="37b16c4f160c734eb802fe1f1132775900000000"/>
 		<Metadata name="Subsystem.Закупки" id="306f11f4-bcb4-436c-bf75-f2276dd0bcd8" configVersion="5b4e08b9b306f04b81783cf63b5d92f500000000"/>
 		<Metadata name="Subsystem.НСИ" id="491c6e43-918f-40cb-84ec-709eb322ab3a" configVersion="4649276a0e5bab47a33422d82642595000000000"/>
+		<Metadata name="Subsystem.Склад" id="8b7f9117-e9fb-488e-b902-9b5213a28241" configVersion="8be332308e494f4cb31add4701e44fbe00000000"/>
 	</ConfigVersions>
 </ConfigDumpInfo>

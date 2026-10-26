@@ -261,12 +261,14 @@
 			<Language>Русский</Language>
 			<Subsystem>НСИ</Subsystem>
 			<Subsystem>Закупки</Subsystem>
+			<Subsystem>Склад</Subsystem>
 			<HTTPService>Test</HTTPService>
 			<Catalog>Номенклатура</Catalog>
 			<Catalog>Склады</Catalog>
 			<Catalog>Контрагенты</Catalog>
 			<Catalog>Сотрудники</Catalog>
 			<Document>ПоступлениеТоваров</Document>
+			<Report>ОстаткиТоваров</Report>
 			<AccumulationRegister>ОстаткиТоваров</AccumulationRegister>
 		</ChildObjects>
 	</Configuration>

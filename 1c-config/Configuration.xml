@@ -271,6 +271,7 @@
 			<Document>ПоступлениеТоваров</Document>
 			<Document>ЗаказПокупателя</Document>
 			<Document>РеализацияТоваров</Document>
+			<Document>ЗаказПоставщику</Document>
 			<Enum>СтатусыЗаказа</Enum>
 			<Report>ОстаткиТоваров</Report>
 			<AccumulationRegister>ОстаткиТоваров</AccumulationRegister>

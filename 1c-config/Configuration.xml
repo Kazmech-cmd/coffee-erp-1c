@@ -263,7 +263,9 @@
 			<Subsystem>Закупки</Subsystem>
 			<Subsystem>Склад</Subsystem>
 			<Subsystem>Продажи</Subsystem>
+			<Subsystem>Финансы</Subsystem>
 			<HTTPService>Test</HTTPService>
+			<HTTPService>Shop</HTTPService>
 			<Catalog>Номенклатура</Catalog>
 			<Catalog>Склады</Catalog>
 			<Catalog>Контрагенты</Catalog>
@@ -272,9 +274,13 @@
 			<Document>ЗаказПокупателя</Document>
 			<Document>РеализацияТоваров</Document>
 			<Document>ЗаказПоставщику</Document>
+			<Document>ОплатаОтПокупателя</Document>
+			<Document>ОплатаПоставщику</Document>
 			<Enum>СтатусыЗаказа</Enum>
 			<Report>ОстаткиТоваров</Report>
+			<Report>Взаиморасчёты</Report>
 			<AccumulationRegister>ОстаткиТоваров</AccumulationRegister>
+			<AccumulationRegister>Взаиморасчеты</AccumulationRegister>
 		</ChildObjects>
 	</Configuration>
 </MetaDataObject>

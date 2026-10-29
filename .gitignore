@@ -7,3 +7,6 @@
 1Cv8Log/
 1Cv8FTxt/
 __pycache__/
+.venv/
+shop-site/static/img/*
+!shop-site/static/img/.gitkeep

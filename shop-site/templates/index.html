@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Coffee Shop</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23a8641f'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Coffee Shop</h1>
+      <p class="sub">Кофе, чай и всё для заваривания. Цены и наличие берутся из 1С в реальном времени.</p>
+    </header>
+
+    <form class="tools glass" method="get" action="/">
+      <input type="hidden" name="category" value="{{ current }}">
+      <input type="search" name="q" value="{{ q }}" placeholder="Поиск по названию">
+
+      <label class="switch">
+        <input type="checkbox" name="in_stock" value="1" {{ 'checked' if stock_only }} onchange="this.form.submit()">
+        <span class="track"></span>
+        <span>Только в наличии</span>
+      </label>
+
+      <div class="group">
+        <span>Цена</span>
+        <input type="number" name="price_min" value="{{ price_min }}" min="0" step="10" placeholder="от" onchange="this.form.submit()">
+        <span>—</span>
+        <input type="number" name="price_max" value="{{ price_max }}" min="0" step="10" placeholder="до" onchange="this.form.submit()">
+      </div>
+
+      <div class="group">
+        <select name="sort" onchange="this.form.submit()" aria-label="Сортировка">
+          {% for code, title in sorts.items() %}
+            <option value="{{ code }}" {{ 'selected' if sort == code }}>{{ title }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      {% if filters_active %}<a class="reset" href="/">Сбросить</a>{% endif %}
+      {% if total %}<span class="count">Показано {{ products|length }} из {{ total }}</span>{% endif %}
+    </form>
+
+    <nav>
+      <a href="{{ make_url(category='') }}" class="{{ 'active' if not current }}">Все</a>
+      {% for code, title in categories.items() %}
+        <a href="{{ make_url(category=code) }}" class="{{ 'active' if current == code }}">{{ title }}</a>
+      {% endfor %}
+    </nav>
+
+    {% if error %}<div class="error">{{ error }}</div>{% endif %}
+
+    {% if products %}
+      <div class="grid">
+        {% for p in products %}
+          <article class="card glass {{ 'out' if p.stock <= 0 }}" data-cat="{{ p.category }}">
+            <div class="media">
+              {% if p.image %}
+                <img src="{{ p.image }}" alt="{{ p.name }}" width="800" height="600" loading="lazy">
+              {% else %}
+                <div class="ph">{{ categories.get(p.category, p.category) }}</div>
+              {% endif %}
+              <span class="tag">{{ categories.get(p.category, p.category) }}</span>
+              {% if p.stock <= 0 %}<span class="soldout">Нет в наличии</span>{% endif %}
+            </div>
+            <div class="body">
+              <h3>{{ p.name }}</h3>
+              <div class="desc">{{ p.description }}</div>
+              <div class="foot">
+                <div class="price">{{ "{:,.0f}".format(p.price).replace(",", " ") }} ₽</div>
+                {% if p.stock > 0 %}
+                  <div class="stock ok">В наличии: {{ p.stock|int }} {{ p.unit }}</div>
+                {% else %}
+                  <div class="stock no">Под заказ</div>
+                {% endif %}
+              </div>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    {% elif not error %}
+      <div class="empty glass">Ничего не найдено. Измени запрос или <a class="reset" href="/">сбрось фильтры</a>.</div>
+    {% endif %}
+
+    <footer>Витрина на FastAPI поверх 1С:Предприятие 8.5</footer>
+  </div>
+</body>
+</html>

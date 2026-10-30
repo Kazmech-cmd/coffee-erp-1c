@@ -17,7 +17,7 @@ IMG_DIR = STATIC_DIR / "img"
 IMG_DIR.mkdir(parents=True, exist_ok=True)
 IMG_EXTENSIONS = (".webp", ".jpg", ".jpeg", ".png")
 
-ONEC_BASE_URL = os.getenv("ONEC_BASE_URL", "http://127.0.0.1/ERP-Shop/hs/shop")
+ONEC_BASE_URL = os.getenv("ONEC_BASE_URL", "http://127.0.0.1/ERP-Shop-demo/hs/shop")
 ONEC_TIMEOUT = float(os.getenv("ONEC_TIMEOUT", "15"))
 
 CATEGORIES = {

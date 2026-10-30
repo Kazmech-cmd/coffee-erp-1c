@@ -1,0 +1,12 @@
+{
+  "customer": {
+    "name": "Петров Пётр",
+    "email": "petrov@example.com",
+    "phone": "+7 900 111-22-33",
+    "address": "г. Москва, ул. Тверская, 1"
+  },
+  "items": [
+    {"sku": "TEA-001", "quantity": 1},
+    {"sku": "COF-002", "quantity": 2}
+  ]
+}

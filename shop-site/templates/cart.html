@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}Корзина | Coffee Shop{% endblock %}
+{% block content %}
+<h1 class="page-title">Корзина</h1>
+
+{% if error %}<div class="error">{{ error }}</div>{% endif %}
+
+{% if lines %}
+  <div class="glass panel">
+    <table class="lines">
+      <thead>
+        <tr><th>Товар</th><th>Цена</th><th>Количество</th><th>Сумма</th><th></th></tr>
+      </thead>
+      <tbody>
+        {% for l in lines %}
+          <tr>
+            <td>
+              {{ l.name }}
+              {% if not l.ok %}<div class="warn">В наличии только {{ l.stock|int }} {{ l.unit }}. Уменьшите количество.</div>{% endif %}
+            </td>
+            <td>{{ l.price|money }} ₽</td>
+            <td>
+              <form class="inline" method="post" action="/cart/update">
+                <input type="hidden" name="sku" value="{{ l.sku }}">
+                <input type="number" name="qty" value="{{ l.qty }}" min="0" max="99">
+                <button class="btn ghost" type="submit">Обновить</button>
+              </form>
+            </td>
+            <td>{{ l.sum|money }} ₽</td>
+            <td>
+              <form method="post" action="/cart/update">
+                <input type="hidden" name="sku" value="{{ l.sku }}">
+                <input type="hidden" name="qty" value="0">
+                <button class="link-btn" type="submit">Удалить</button>
+              </form>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <div class="total">Итого: <strong>{{ total|money }} ₽</strong></div>
+  </div>
+
+  <h2 class="section-title">Оформление заказа</h2>
+  <form class="glass panel checkout" method="post" action="/checkout">
+    <label>Имя
+      <input type="text" name="name" value="{{ form.get('name', '') }}" required maxlength="100">
+    </label>
+    <label>Email
+      <input type="email" name="email" value="{{ form.get('email', '') }}" required maxlength="100">
+    </label>
+    <label>Телефон
+      <input type="text" name="phone" value="{{ form.get('phone', '') }}" maxlength="20">
+    </label>
+    <label class="wide">Адрес доставки
+      <input type="text" name="address" value="{{ form.get('address', '') }}" required maxlength="200">
+    </label>
+    <div class="wide actions">
+      <button class="btn" type="submit" {{ 'disabled' if not can_checkout }}>Оформить заказ</button>
+      {% if not can_checkout %}<span class="muted">Исправьте количество товаров, чтобы продолжить.</span>{% endif %}
+    </div>
+  </form>
+{% else %}
+  <div class="empty glass">Корзина пуста. <a class="reset" href="/">Вернуться в каталог</a></div>
+{% endif %}
+{% endblock %}

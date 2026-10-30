@@ -102,11 +102,15 @@
 			<Metadata name="Enum.СтатусыЗаказа.EnumValue.Новый" id="906aacf8-4fb2-4d2c-b72c-b66223898b83"/>
 			<Metadata name="Enum.СтатусыЗаказа.EnumValue.Выполнен" id="945c4a0d-8f01-4c05-96d9-7778d5ac90fb"/>
 		</Metadata>
-		<Metadata name="HTTPService.Shop" id="16069f6f-db86-41c5-8b72-5d300aaae6a1" configVersion="5cac41c31703a54ebda5f63d6f2be5f300000000">
+		<Metadata name="HTTPService.Shop" id="16069f6f-db86-41c5-8b72-5d300aaae6a1" configVersion="716a33141c336b4390bb5109a1638faa00000000">
 			<Metadata name="HTTPService.Shop.URLTemplate.Catalog.Method.GET" id="0707122c-7087-4e6c-9d02-9c701be336bf"/>
+			<Metadata name="HTTPService.Shop.URLTemplate.OrderByNumber.Method.GET" id="4c7c3cfe-0319-4003-aea7-04e254ec0e27"/>
+			<Metadata name="HTTPService.Shop.URLTemplate.OrderByNumber" id="59b5cca1-c863-455b-8bb1-3671f9842b29"/>
+			<Metadata name="HTTPService.Shop.URLTemplate.Orders" id="78baedc5-a3ad-45be-87fb-44a17569d96e"/>
 			<Metadata name="HTTPService.Shop.URLTemplate.Catalog" id="b2074c44-e511-4ad0-8284-f60c6e2bee58"/>
+			<Metadata name="HTTPService.Shop.URLTemplate.Orders.Method.POST" id="fb8544b3-1968-4a7c-a2eb-0ff19c84a752"/>
 		</Metadata>
-		<Metadata name="HTTPService.Shop.Module" id="16069f6f-db86-41c5-8b72-5d300aaae6a1.0" configVersion="41a61f1b7f3edc47b058dd6f9a9daf5c00000000"/>
+		<Metadata name="HTTPService.Shop.Module" id="16069f6f-db86-41c5-8b72-5d300aaae6a1.0" configVersion="fd5a960d6f7a7045920f646a37f2508d00000000"/>
 		<Metadata name="HTTPService.Test" id="6ff49259-878b-4608-9214-267b07bcd2bb" configVersion="c6cf5b04d66e434b9f7b4963ad9cda5700000000">
 			<Metadata name="HTTPService.Test.URLTemplate.Ping" id="2b5235ee-05da-49b2-b297-d8d762ceb011"/>
 			<Metadata name="HTTPService.Test.URLTemplate.Ping.Method.GET" id="6ccd350b-54bf-498c-91ea-3cc8d6adb922"/>

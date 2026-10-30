@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}Мой заказ | Coffee Shop{% endblock %}
+{% block content %}
+<h1 class="page-title">Мой заказ</h1>
+
+{% if error %}<div class="error">{{ error }}</div>{% endif %}
+
+{% if order %}
+  <div class="glass panel">
+    <div class="order-head">
+      <div>Заказ № <strong>{{ order.order_number }}</strong></div>
+      <div class="muted">{{ order.date[:10] }}</div>
+    </div>
+
+    {% if order.status == 'Отменён' %}
+      <div class="status cancelled">Заказ отменён</div>
+    {% else %}
+      <ol class="steps">
+        {% for s in steps %}
+          <li class="{{ 'done' if loop.index0 <= step_index }} {{ 'current' if loop.index0 == step_index }}">{{ s }}</li>
+        {% endfor %}
+      </ol>
+    {% endif %}
+
+    <table class="lines">
+      <thead><tr><th>Товар</th><th>Цена</th><th>Количество</th><th>Сумма</th></tr></thead>
+      <tbody>
+        {% for i in order["items"] %}
+          <tr>
+            <td>{{ i.name }}</td>
+            <td>{{ i.price|money }} ₽</td>
+            <td>{{ i.quantity|int }}</td>
+            <td>{{ i.sum|money }} ₽</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <div class="total">Итого: <strong>{{ order.total|money }} ₽</strong></div>
+  </div>
+{% endif %}
+
+<h2 class="section-title">Найти заказ</h2>
+<form class="glass panel checkout" method="get" action="/order">
+  <label>Номер заказа
+    <input type="text" name="number" value="{{ number or '' }}" inputmode="numeric" required>
+  </label>
+  <label>Email, указанный при заказе
+    <input type="email" name="email" value="{{ email or '' }}" required>
+  </label>
+  <div class="wide actions">
+    <button class="btn" type="submit">Показать статус</button>
+  </div>
+</form>
+{% endblock %}

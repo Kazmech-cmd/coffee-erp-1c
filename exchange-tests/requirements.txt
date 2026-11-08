@@ -1,0 +1,2 @@
+-r ../shop-site/requirements.txt
+pytest>=8.0

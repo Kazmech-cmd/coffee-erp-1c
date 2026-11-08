@@ -10,3 +10,4 @@ __pycache__/
 .venv/
 shop-site/static/img/*
 !shop-site/static/img/.gitkeep
+.pytest_cache/

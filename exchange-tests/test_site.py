@@ -105,7 +105,7 @@ def test_order_page_shows_status(site, created_order):
     assert created_order["number"] in response.text
 
 
-def test_checkout_creates_order_in_1c(site, in_stock_product):
+def test_checkout_creates_order_in_1c(site, onec, in_stock_product):
     """Сквозной сценарий: корзина на сайте, заказ в 1С, страница заказа."""
     site.post("/cart/add", data={"sku": in_stock_product["sku"], "qty": 1, "next": "/"},
               follow_redirects=False)
@@ -118,6 +118,8 @@ def test_checkout_creates_order_in_1c(site, in_stock_product):
     assert response.status_code == 303, response.text
     location = response.headers["location"]
     assert location.startswith("/order/")
+    # заказ создан на сайте: запоминаем, чтобы отменить после теста и освободить резерв
+    onec.track(location.split("?")[0].rsplit("/", 1)[1], "autotest@example.com")
     order_page = site.get(location)
     assert order_page.status_code == 200
     assert "Новый" in order_page.text

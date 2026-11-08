@@ -20,6 +20,7 @@ class OneC:
 
     def __init__(self, base_url: str):
         self.base_url = base_url
+        self.pending = {}  # заказы, созданные тестом и ещё не отменённые: номер -> email
         # trust_env=False: не ходить к 127.0.0.1 через системный прокси.
         # Без keep-alive: IIS/1С иногда рвут «залежавшееся» соединение (WinError 10054).
         self.client = httpx.Client(
@@ -49,7 +50,30 @@ class OneC:
         return self.request("GET", path, **kwargs)
 
     def post(self, path: str, **kwargs) -> httpx.Response:
-        return self.request("POST", path, **kwargs)
+        response = self.request("POST", path, **kwargs)
+        if path == "/orders" and response.status_code == 201:
+            email = (kwargs.get("json") or {}).get("customer", {}).get("email", "")
+            self.pending[response.json()["order_number"]] = email
+        return response
+
+    # --- заказы, созданные тестами: запоминаем и отменяем, чтобы освободить резерв ---
+
+    def track(self, number: str, email: str) -> None:
+        self.pending[number] = email
+
+    def untrack(self, number: str) -> None:
+        self.pending.pop(number, None)
+
+    def cancel(self, number: str, email: str) -> httpx.Response:
+        return self.request("POST", f"/orders/{number}/cancel", params={"email": email})
+
+    def cleanup(self) -> None:
+        for number, email in list(self.pending.items()):
+            try:
+                self.cancel(number, email)
+            except httpx.HTTPError:
+                pass
+        self.pending.clear()
 
 
 @pytest.fixture(scope="session")
@@ -65,6 +89,13 @@ def onec():
         )
     yield api
     api.client.close()
+
+
+@pytest.fixture(autouse=True)
+def release_reserves(onec):
+    """После каждого теста отменяем созданные им заказы, чтобы они не держали резерв."""
+    yield
+    onec.cleanup()
 
 
 @pytest.fixture(scope="session")
@@ -104,14 +135,20 @@ def order_payload():
 
 @pytest.fixture(scope="session")
 def created_order(onec, in_stock_product, order_payload):
-    """Один заказ на все тесты статуса, чтобы не плодить записи в учебной базе."""
+    """Один заказ на все тесты статуса. В конце сессии отменяется, резерв возвращается."""
     payload = order_payload([{"sku": in_stock_product["sku"], "quantity": 1}])
     response = onec.post("/orders", json=payload)
     assert response.status_code == 201, response.text
     body = response.json()
-    return {
-        "number": body["order_number"],
+    number = body["order_number"]
+    onec.untrack(number)  # убирать будем сами, в конце сессии
+    yield {
+        "number": number,
         "email": TEST_EMAIL,
         "product": in_stock_product,
         "total": body["total"],
     }
+    try:
+        onec.cancel(number, TEST_EMAIL)
+    except httpx.HTTPError:
+        pass

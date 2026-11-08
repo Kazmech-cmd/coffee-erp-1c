@@ -102,6 +102,35 @@
 					</Method>
 				</ChildObjects>
 			</URLTemplate>
+			<URLTemplate uuid="8e31b5bc-a993-4a16-9f47-2995bc3c57f7">
+				<Properties>
+					<Name>OrderCancel</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Order cancel</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Template>/orders/{Number}/cancel</Template>
+				</Properties>
+				<ChildObjects>
+					<Method uuid="a855ba9c-83c9-47ef-a218-b5c48aac8019">
+						<Properties>
+							<Name>POST</Name>
+							<Synonym>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>POST</v8:content>
+								</v8:item>
+							</Synonym>
+							<Comment/>
+							<HTTPMethod>POST</HTTPMethod>
+							<Handler>OrderCancelPOST</Handler>
+						</Properties>
+					</Method>
+				</ChildObjects>
+			</URLTemplate>
 		</ChildObjects>
 	</HTTPService>
 </MetaDataObject>

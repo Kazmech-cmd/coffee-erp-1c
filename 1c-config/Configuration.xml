@@ -281,6 +281,7 @@
 			<Report>Взаиморасчёты</Report>
 			<AccumulationRegister>ОстаткиТоваров</AccumulationRegister>
 			<AccumulationRegister>Взаиморасчеты</AccumulationRegister>
+			<AccumulationRegister>РезервыТоваров</AccumulationRegister>
 		</ChildObjects>
 	</Configuration>
 </MetaDataObject>

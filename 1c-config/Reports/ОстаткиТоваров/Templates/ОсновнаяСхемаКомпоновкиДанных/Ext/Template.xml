@@ -24,17 +24,77 @@
 				<dcscom:dimension>true</dcscom:dimension>
 			</role>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Остаток</dataPath>
+			<field>Остаток</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Остаток</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Резерв</dataPath>
+			<field>Резерв</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Резерв</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Доступно</dataPath>
+			<field>Доступно</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Доступно</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
-    ОстаткиТоваровОстатки.Склады КАК Склады,
-    ОстаткиТоваровОстатки.Номенклатура КАК Номенклатура,
-    ОстаткиТоваровОстатки.КоличествоОстаток КАК КоличествоОстаток
+    Данные.Склады КАК Склады,
+    Данные.Номенклатура КАК Номенклатура,
+    СУММА(Данные.Остаток) КАК КоличествоОстаток,
+    СУММА(Данные.Резерв) КАК Резерв,
+    СУММА(Данные.Остаток - Данные.Резерв) КАК Доступно
 ИЗ
-    РегистрНакопления.ОстаткиТоваров.Остатки КАК ОстаткиТоваровОстатки</query>
+    (ВЫБРАТЬ
+        О.Склады КАК Склады,
+        О.Номенклатура КАК Номенклатура,
+        О.КоличествоОстаток КАК Остаток,
+        0 КАК Резерв
+    ИЗ
+        РегистрНакопления.ОстаткиТоваров.Остатки КАК О
+
+    ОБЪЕДИНИТЬ ВСЕ
+
+    ВЫБРАТЬ
+        Р.Склады,
+        Р.Номенклатура,
+        0,
+        Р.КоличествоОстаток
+    ИЗ
+        РегистрНакопления.РезервыТоваров.Остатки КАК Р) КАК Данные
+
+СГРУППИРОВАТЬ ПО
+    Данные.Склады,
+    Данные.Номенклатура</query>
 	</dataSet>
 	<totalField>
 		<dataPath>КоличествоОстаток</dataPath>
 		<expression>Сумма(КоличествоОстаток)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Доступно</dataPath>
+		<expression>Сумма(Доступно)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Резерв</dataPath>
+		<expression>Сумма(Резерв)</expression>
 	</totalField>
 	<parameter>
 		<name>Период</name>
@@ -66,6 +126,12 @@
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>КоличествоОстаток</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Резерв</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Доступно</dcsset:field>
 				</dcsset:item>
 			</dcsset:selection>
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
